@@ -62,7 +62,6 @@ def play_game(p1, p2):
         p2.gain_rating(p1.rating)
         p1.lose_rating(p2.rating)
 
-
 create_players(10000)
 
 for i in range(100000):
