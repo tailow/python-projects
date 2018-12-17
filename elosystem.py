@@ -2,9 +2,6 @@ import random
 from matplotlib import pyplot as plt
 
 
-players = []
-
-
 class Player:
     def __init__(self, name, skill, rating):
         self.name = name
@@ -40,19 +37,19 @@ def play_game(p1, p2):
     if p1 == p2:
         return
 
-    if abs(p1.rating - p2.rating) >= 1000:
+    if abs(p1.rating - p2.rating) >= 50:
         return
 
     skill_difference = p1.skill - p2.skill
 
-    if skill_difference > 500:
+    if skill_difference > 100:
         p1_odds = 100
 
-    elif skill_difference < -500:
+    elif skill_difference < -100:
         p1_odds = 0
 
     else:
-        p1_odds = (skill_difference / 10) + 50
+        p1_odds = (skill_difference / 2) + 50
 
     if random.randint(1, 100) <= p1_odds:
         p1.gain_rating(p2.rating)
@@ -62,9 +59,12 @@ def play_game(p1, p2):
         p2.gain_rating(p1.rating)
         p1.lose_rating(p2.rating)
 
+
+players = []
+
 create_players(10000)
 
-for i in range(100000):
+for i in range(1000000):
     play_game(random.choice(players), random.choice(players))
 
 player_ratings = []
