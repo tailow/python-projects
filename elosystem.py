@@ -19,7 +19,7 @@ class Player:
     def lose_rating(self, opponent_rating):
         difference = (self.rating - opponent_rating)
 
-        self.rating -= 1.35*difference**(1/3) + 10
+        self.rating -= 1.35*difference**(1/3) + 5
 
         if self.rating.real < 1000:
             self.rating = 1000
@@ -62,16 +62,27 @@ def play_game(p1, p2):
 
 players = []
 
-create_players(10000)
+create_players(1000000)
 
-for i in range(1000000):
+for i in range(100000000):
     play_game(random.choice(players), random.choice(players))
 
 player_ratings = []
+player_skills = []
 
 for player in players:
     print(player.name, int(player.rating.real), player.skill, player.wins, player.losses)
     player_ratings.append(player.rating.real)
+    player_skills.append(player.skill)
 
-plt.hist(player_ratings, 100)
+fig = plt.figure(figsize=(12, 6))
+
+fig.add_subplot(1, 2, 1)
+plt.title("Player ELO")
+plt.hist(player_ratings, 200)
+
+fig.add_subplot(1, 2, 2)
+plt.title("Player skill")
+plt.hist(player_skills, 200)
+
 plt.show()
