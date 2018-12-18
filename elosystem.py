@@ -62,9 +62,9 @@ def play_game(p1, p2):
 
 players = []
 
-create_players(1000000)
+create_players(100000)
 
-for i in range(100000000):
+for i in range(10000000):
     play_game(random.choice(players), random.choice(players))
 
 player_ratings = []
