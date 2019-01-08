@@ -42,25 +42,46 @@ def analyse_move(player, column, analysis_board):
 
 def play_game():
     while True:
+
         print_board()
 
         play_move(1, ask_player_input())
 
-        winner = check_win(board)
-
-        if winner:
+        if check_win(board):
             print_board()
-            print("Player %s won!" % winner)
+            print("Player won!")
+            return
+
+        if is_tied(board):
+            print_board()
+            print("It's a tie!")
             return
 
         play_move(2, calculate_move())
 
-        winner = check_win(board)
-
-        if winner:
+        if check_win(board):
             print_board()
             print("Bot won!")
             return
+
+        if is_tied(board):
+            print_board()
+            print("It's a tie!")
+            return
+
+
+def is_tied(board_state):
+    legal_moves = []
+
+    for i in range(board_width + 1):
+        if is_legal(i, board_state):
+            legal_moves.append(i)
+
+    if len(legal_moves) == 0:
+        return True
+
+    else:
+        return False
 
 
 def print_board():
@@ -96,13 +117,30 @@ def is_legal(move, current_board):
 
 def ask_player_input():
     while True:
-        move = int(input("Select column: "))
+        try:
+            move = int(input("Select column: "))
 
-        if is_legal(move, board):
+            if is_legal(move, board):
+                return move
+            else:
+                print("Illegal move!")
+
+        except ValueError:
+            print("Only numbers please.")
+
+
+def is_checkmate(player, analysis_board):
+    legal_moves = []
+
+    for i in range(board_width + 1):
+        if is_legal(i, analysis_board):
+            legal_moves.append(i)
+
+    for move in legal_moves:
+        analysis_board = copy.deepcopy(board)
+
+        if check_win(analyse_move(player, move, analysis_board)):
             return move
-
-        else:
-            print("Illegal move!")
 
 
 def calculate_move():
@@ -114,9 +152,11 @@ def calculate_move():
         if is_legal(i, analysis_board):
             legal_moves.append(i)
 
-    for move in legal_moves:
-        if check_win(analyse_move(2, move, analysis_board)):
-            return move
+    if is_checkmate(2, analysis_board):
+        return is_checkmate(2, analysis_board)
+
+    if is_checkmate(1, analysis_board):
+        return is_checkmate(1, analysis_board)
 
     if is_legal(4, board):
         return 4
@@ -159,26 +199,14 @@ def check_win(board_state):
     # Check descending diagonal rows
     for y in range(board_height - 3):
         for x in range(board_width - 3):
-            if board_state[y][x] == board_state[y + 1][x + 1] and board_state[y][x] != 0:
-                piece_count += 1
-
-                if piece_count >= 4:
+            if board_state[y][x] == board_state[y + 1][x + 1] == board_state[y + 2][x + 2] == board_state[y + 3][x + 3] and board_state[y][x] != 0:
                     return board_state[y][x]
-
-            else:
-                piece_count = 1
 
     # Check ascending diagonal rows
     for y in range(3, board_height):
         for x in range(board_width - 3):
-            if board_state[y][x] == board_state[y - 1][x + 1] and board_state[y][x] != 0:
-                piece_count += 1
-
-                if piece_count >= 4:
-                    return board_state[y][x]
-
-            else:
-                piece_count = 1
+            if board_state[y][x] == board_state[y - 1][x + 1] == board_state[y - 2][x + 2] == board_state[y - 3][x + 3] and board_state[y][x] != 0:
+                return board_state[y][x]
 
 
 board = make_board(board_width, board_height)
