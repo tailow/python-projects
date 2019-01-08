@@ -1,6 +1,9 @@
 import random
 from matplotlib import pyplot as plt
 
+amount_of_games = 10000000
+amount_of_players = 100000
+
 
 class Player:
     def __init__(self, name, skill, rating):
@@ -19,7 +22,7 @@ class Player:
     def lose_rating(self, opponent_rating):
         difference = (self.rating - opponent_rating)
 
-        self.rating -= 1.35*difference**(1/3) + 5
+        self.rating -= difference**(1/3) + 5
 
         if self.rating.real < 1000:
             self.rating = 1000
@@ -62,9 +65,9 @@ def play_game(p1, p2):
 
 players = []
 
-create_players(100000)
+create_players(amount_of_players)
 
-for i in range(10000000):
+for i in range(amount_of_games):
     play_game(random.choice(players), random.choice(players))
 
 player_ratings = []
@@ -78,7 +81,7 @@ for player in players:
 fig = plt.figure(figsize=(12, 6))
 
 fig.add_subplot(1, 2, 1)
-plt.title("Player ELO")
+plt.title("Player rating")
 plt.hist(player_ratings, 200)
 
 fig.add_subplot(1, 2, 2)

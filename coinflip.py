@@ -24,15 +24,3 @@ if money > 0:
 
 else:
     print("no money get out")
-
-if money == 0:
-    print()
-
-elif money != 1:
-    print()
-
-elif money <= -2:
-    print()
-
-else:
-    print()

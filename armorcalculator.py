@@ -1,25 +1,4 @@
-class Gloves:
-    def __init__(self, name, value, weight):
-        self.name = name
-        self.value = value
-        self.weight = weight
-
-
-class Chest:
-    def __init__(self, name, value, weight):
-        self.name = name
-        self.value = value
-        self.weight = weight
-
-
-class Boots:
-    def __init__(self, name, value, weight):
-        self.name = name
-        self.value = value
-        self.weight = weight
-
-
-class Helmet:
+class Armor:
     def __init__(self, name, value, weight):
         self.name = name
         self.value = value
@@ -31,7 +10,7 @@ def check_values():
     value = int(input("Input value: "))
     weight = int(input("Input weight: "))
 
-    return Gloves(name, value, weight)
+    return Armor(name, value, weight)
 
 
 def check_highest_value(max_weight):
