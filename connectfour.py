@@ -8,6 +8,7 @@ board_height = 6
 
 
 def make_board(width, height):
+
     new_list = []
 
     for y in range(height):
@@ -18,29 +19,31 @@ def make_board(width, height):
     return new_list
 
 
-def play_move(player, column):
-    for row in range(board_height):
-        if board[row][column - 1] != 0:
-            board[row - 1][column - 1] = player
-            break
+def print_board():
 
-        elif row == board_height - 1:
-            board[row][column - 1] = player
+    print()
 
+    for y in range(board_height):
+        for x in range(board_width):
 
-def analyse_move(player, column, analysis_board):
-    for row in range(board_height):
-        if analysis_board[row][column - 1] != 0:
-            analysis_board[row - 1][column - 1] = player
-            break
+            if board[y][x] == 0:
+                print("_ ", end="")
 
-        elif row == board_height - 1:
-            analysis_board[row][column - 1] = player
+            elif board[y][x] == 1:
+                print("O ", end="")
 
-    return analysis_board
+            else:
+                print("X ", end="")
+
+        print("\n")
+
+    print("1 2 3 4 5 6 7")
+
+    print()
 
 
 def play_game():
+
     while True:
 
         print_board()
@@ -70,52 +73,40 @@ def play_game():
             return
 
 
-def is_tied(board_state):
-    legal_moves = []
+def play_move(player, column):
 
-    for i in range(board_width + 1):
-        if is_legal(i, board_state):
-            legal_moves.append(i)
+    # For each row, check if there is a piece
+    for row in range(board_height):
 
-    if len(legal_moves) == 0:
-        return True
+        # If there is, add a piece to the row above
+        if board[row][column - 1] != 0:
+            board[row - 1][column - 1] = player
+            break
 
-    else:
-        return False
-
-
-def print_board():
-    print()
-
-    for y in range(board_height):
-        for x in range(board_width):
-            if board[y][x] == 0:
-                print("_ ", end="")
-
-            elif board[y][x] == 1:
-                print("O ", end="")
-
-            else:
-                print("X ", end="")
-
-        print("\n")
-
-    print("1 2 3 4 5 6 7")
-    print()
+        # If you reach the bottom of the row, add a piece there
+        elif row == board_height - 1:
+            board[row][column - 1] = player
 
 
-def is_legal(move, current_board):
-    if move < 1 or move > 7:
-        return False
+def analyse_move(player, column, analysis_board):
 
-    elif current_board[0][move - 1] != 0:
-        return False
+    # For each row, check if there is a piece
+    for row in range(board_height):
 
-    else:
-        return True
+        # If there is, add a piece to the row above
+        if analysis_board[row][column - 1] != 0:
+            analysis_board[row - 1][column - 1] = player
+            break
+
+        # If you reach the bottom of the row, add a piece there
+        elif row == board_height - 1:
+            analysis_board[row][column - 1] = player
+
+    return analysis_board
 
 
 def ask_player_input():
+
     while True:
         try:
             move = int(input("Select column: "))
@@ -129,32 +120,21 @@ def ask_player_input():
             print("Only numbers please.")
 
 
-def is_checkmate(player, analysis_board):
-    legal_moves = []
-
-    for i in range(board_width + 1):
-        if is_legal(i, analysis_board):
-            legal_moves.append(i)
-
-    for move in legal_moves:
-        analysis_board = copy.deepcopy(board)
-
-        if check_win(analyse_move(player, move, analysis_board)):
-            return move
-
-
 def calculate_move():
     analysis_board = copy.deepcopy(board)
 
     legal_moves = []
 
+    # Check legal moves
     for i in range(board_width + 1):
         if is_legal(i, analysis_board):
             legal_moves.append(i)
 
+    # Check for winning moves
     if is_checkmate(2, analysis_board):
         return is_checkmate(2, analysis_board)
 
+    # Check for opponent winning moves
     if is_checkmate(1, analysis_board):
         return is_checkmate(1, analysis_board)
 
@@ -163,6 +143,53 @@ def calculate_move():
 
     else:
         return random.choice(legal_moves)
+
+
+def is_legal(move, board_state):
+
+    if move < 1 or move > 7:
+        return False
+
+    # Check if the column is full
+    elif board_state[0][move - 1] != 0:
+        return False
+
+    else:
+        return True
+
+
+def is_checkmate(player, analysis_board):
+
+    legal_moves = []
+
+    # Check legal moves
+    for i in range(board_width + 1):
+        if is_legal(i, analysis_board):
+            legal_moves.append(i)
+
+    # For each move, check if there is a win
+    for move in legal_moves:
+        analysis_board = copy.deepcopy(board)
+
+        # Play a move in the analysis board and check if the game is over
+        if check_win(analyse_move(player, move, analysis_board)):
+            return move
+
+
+def is_tied(board_state):
+
+    legal_moves = []
+
+    # Check legal moves
+    for i in range(board_width + 1):
+        if is_legal(i, board_state):
+            legal_moves.append(i)
+
+    if len(legal_moves) == 0:
+        return True
+
+    else:
+        return False
 
 
 def check_win(board_state):
@@ -199,13 +226,17 @@ def check_win(board_state):
     # Check descending diagonal rows
     for y in range(board_height - 3):
         for x in range(board_width - 3):
-            if board_state[y][x] == board_state[y + 1][x + 1] == board_state[y + 2][x + 2] == board_state[y + 3][x + 3] and board_state[y][x] != 0:
+            if board_state[y][x] == board_state[y + 1][x + 1] == board_state[y + 2][x + 2] == board_state[y + 3][x + 3]\
+                    and board_state[y][x] != 0:
+
                     return board_state[y][x]
 
     # Check ascending diagonal rows
     for y in range(3, board_height):
         for x in range(board_width - 3):
-            if board_state[y][x] == board_state[y - 1][x + 1] == board_state[y - 2][x + 2] == board_state[y - 3][x + 3] and board_state[y][x] != 0:
+            if board_state[y][x] == board_state[y - 1][x + 1] == board_state[y - 2][x + 2] == board_state[y - 3][x + 3]\
+                    and board_state[y][x] != 0:
+
                 return board_state[y][x]
 
 
