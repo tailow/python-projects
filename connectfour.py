@@ -8,6 +8,7 @@ board_height = 6
 
 jari1_wins = 0
 jari2_wins = 0
+amount_of_ties = 0
 
 
 def make_board(width, height):
@@ -46,33 +47,33 @@ def print_board():
 
 
 def play_game():
+    global board
+    board = make_board(board_width, board_height)
+
+    global amount_of_ties
+
     while True:
         play_move(1, jari.calculate_move(board))
 
         if check_win(board):
-            print("jari won!")
-
             global jari1_wins
             jari1_wins += 1
-
             return
 
         if is_tied(board):
-            print("It's a tie!")
+            amount_of_ties += 1
             return
 
         play_move(2, jari2.calculate_move(board))
 
         if check_win(board):
-            print("jari2 won!")
-
             global jari2_wins
             jari2_wins += 1
-
             return
 
         if is_tied(board):
-            print("It's a tie!")
+
+            amount_of_ties += 1
             return
 
 
@@ -175,3 +176,4 @@ for i in range(100):
 
 print("jari1 wins: " + str(jari1_wins))
 print("jari2 wins: " + str(jari2_wins))
+print("ties: " + str(amount_of_ties))
