@@ -27,6 +27,12 @@ def calculate_move(board):
     if is_legal(4, board):
         return 4
 
+    elif is_legal(5, board):
+        return 5
+
+    elif is_legal(3, board):
+        return 3
+
     else:
         return random.choice(legal_moves)
 

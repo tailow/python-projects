@@ -3,12 +3,16 @@
 import jari
 import jari2
 
+from matplotlib import pyplot as plt
+
 board_width = 7
 board_height = 6
 
 jari1_wins = 0
 jari2_wins = 0
 amount_of_ties = 0
+
+played_moves = []
 
 
 def make_board(width, height):
@@ -53,7 +57,10 @@ def play_game():
     global amount_of_ties
 
     while True:
-        play_move(1, jari.calculate_move(board))
+        move = jari.calculate_move(board)
+        play_move(1, move)
+
+        played_moves.append(move)
 
         if check_win(board):
             global jari1_wins
@@ -64,7 +71,10 @@ def play_game():
             amount_of_ties += 1
             return
 
-        play_move(2, jari2.calculate_move(board))
+        move = jari2.calculate_move(board)
+        play_move(2, move)
+
+        played_moves.append(move)
 
         if check_win(board):
             global jari2_wins
@@ -177,3 +187,6 @@ for i in range(100):
 print("jari1 wins: " + str(jari1_wins))
 print("jari2 wins: " + str(jari2_wins))
 print("ties: " + str(amount_of_ties))
+
+plt.hist(played_moves)
+plt.show()
