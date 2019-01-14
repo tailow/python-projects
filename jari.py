@@ -1,46 +1,81 @@
 # CONNECT 4 BOT
 
-import random
 import copy
 
+board_height = 6
+board_width = 7
 
-def calculate_move(board):
+
+def calculate_move(board, player, opponent):
     analysis_board = copy.deepcopy(board)
 
-    board_width = len(board[0])
-
     legal_moves = []
+
+    best_move = -1
+    best_move_evaluation = -200
 
     # Check legal moves
     for i in range(board_width + 1):
         if is_legal(i, analysis_board):
             legal_moves.append(i)
 
-    # Check for winning moves
-    if is_checkmate(2, analysis_board, board):
-        return is_checkmate(2, analysis_board, board)
+    # Check evaluation of each move
+    for move in legal_moves:
+        analysis_board = copy.deepcopy(board)
 
-    # Check for opponent winning moves
-    if is_checkmate(1, analysis_board, board):
-        return is_checkmate(1, analysis_board, board)
+        evaluation = evaluate(analyse_move(player, move, analysis_board), player, opponent)
 
-    if is_legal(4, board):
-        return 4
+        if evaluation > best_move_evaluation:
+            best_move = move
+            best_move_evaluation = evaluation
 
-    elif is_legal(3, board):
-        return 3
-
-    elif is_legal(5, board):
-        return 5
-
-    else:
-        return random.choice(legal_moves)
+    return best_move
 
 
-def analyse_move(player, column, analysis_board, board):
+def evaluate(board, player, opponent):
+    evaluation = 0
 
-    board_height = len(board)
+    analysis_board = copy.deepcopy(board)
 
+    if check_win(board) == player:
+        evaluation = 100
+
+    if is_checkmate(opponent, analysis_board, board):
+        evaluation = -100
+
+    # Check amount of pieces in the middle
+    evaluation += pieces_in_column(4, player, opponent, board)
+
+    # Check amount of pieces next to middle
+    evaluation += pieces_in_column(3, player, opponent, board)
+
+    # Check amount of pieces next to middle
+    evaluation += pieces_in_column(5, player, opponent, board)
+
+    return evaluation
+
+
+def pieces_in_column(column, player, opponent, board):
+    own_pieces = 0
+    opponent_pieces = 0
+    evaluation = 0
+
+    for piece in board[column - 1]:
+        if piece == player:
+            own_pieces += 1
+        if piece == opponent:
+            opponent_pieces += 1
+
+    if own_pieces > opponent_pieces:
+        evaluation += 3
+
+    if opponent_pieces > own_pieces:
+        evaluation -= 3
+
+    return evaluation
+
+
+def analyse_move(player, column, analysis_board):
     # For each row, check if there is a piece
     for row in range(board_height):
 
@@ -57,7 +92,6 @@ def analyse_move(player, column, analysis_board, board):
 
 
 def is_legal(move, board_state):
-
     if move < 1 or move > 7:
         return False
 
@@ -70,8 +104,6 @@ def is_legal(move, board_state):
 
 
 def is_checkmate(player, analysis_board, board):
-    board_width = len(board[0])
-
     legal_moves = []
 
     # Check legal moves
@@ -84,15 +116,12 @@ def is_checkmate(player, analysis_board, board):
         analysis_board = copy.deepcopy(board)
 
         # Play a move in the analysis board and check if the game is over
-        if check_win(analyse_move(player, move, analysis_board, board)):
+        if check_win(analyse_move(player, move, analysis_board)):
             return move
 
 
 def check_win(board_state):
     piece_count = 1
-
-    board_width = len(board_state[0])
-    board_height = len(board_state)
 
     # Check horizontal rows
     for y in range(board_height):

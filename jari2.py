@@ -3,11 +3,12 @@
 import random
 import copy
 
+board_height = 6
+board_width = 7
 
-def calculate_move(board):
+
+def calculate_move(board, player, opponent):
     analysis_board = copy.deepcopy(board)
-
-    board_width = len(board[0])
 
     legal_moves = []
 
@@ -17,29 +18,21 @@ def calculate_move(board):
             legal_moves.append(i)
 
     # Check for winning moves
-    if is_checkmate(2, analysis_board, board):
-        return is_checkmate(2, analysis_board, board)
+    if is_checkmate(player, analysis_board, board):
+        return is_checkmate(player, analysis_board, board)
 
     # Check for opponent winning moves
-    if is_checkmate(1, analysis_board, board):
-        return is_checkmate(1, analysis_board, board)
+    if is_checkmate(opponent, analysis_board, board):
+        return is_checkmate(opponent, analysis_board, board)
 
     if is_legal(4, board):
         return 4
-
-    elif is_legal(5, board):
-        return 5
-
-    elif is_legal(3, board):
-        return 3
 
     else:
         return random.choice(legal_moves)
 
 
 def analyse_move(player, column, analysis_board, board):
-
-    board_height = len(board)
 
     # For each row, check if there is a piece
     for row in range(board_height):
@@ -70,8 +63,6 @@ def is_legal(move, board_state):
 
 
 def is_checkmate(player, analysis_board, board):
-    board_width = len(board[0])
-
     legal_moves = []
 
     # Check legal moves
@@ -90,9 +81,6 @@ def is_checkmate(player, analysis_board, board):
 
 def check_win(board_state):
     piece_count = 1
-
-    board_width = len(board_state[0])
-    board_height = len(board_state)
 
     # Check horizontal rows
     for y in range(board_height):

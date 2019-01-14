@@ -57,7 +57,7 @@ def play_game():
     global amount_of_ties
 
     while True:
-        move = jari.calculate_move(board)
+        move = jari.calculate_move(board, 1, 2)
         play_move(1, move)
 
         played_moves.append(move)
@@ -71,7 +71,7 @@ def play_game():
             amount_of_ties += 1
             return
 
-        move = jari2.calculate_move(board)
+        move = jari2.calculate_move(board, 2, 1)
         play_move(2, move)
 
         played_moves.append(move)
@@ -116,7 +116,6 @@ def is_legal(move, board_state):
 
 
 def is_tied(board_state):
-
     legal_moves = []
 
     # Check legal moves
@@ -188,5 +187,15 @@ print("jari1 wins: " + str(jari1_wins))
 print("jari2 wins: " + str(jari2_wins))
 print("ties: " + str(amount_of_ties))
 
-plt.hist(played_moves)
+data = []
+
+for i in range(1, 8):
+    count = 0
+    for num in played_moves:
+        if num == i:
+            count += 1
+
+    data.append(count)
+
+plt.plot(data)
 plt.show()
