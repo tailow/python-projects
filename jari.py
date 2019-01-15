@@ -25,9 +25,13 @@ def calculate_move(board, player, opponent):
 
         evaluation = evaluate(analyse_move(player, move, analysis_board), player, opponent)
 
+        print(evaluation)
+
         if evaluation > best_move_evaluation:
             best_move = move
             best_move_evaluation = evaluation
+
+    print("evaluation: " + str(evaluate(board, player, opponent)))
 
     return best_move
 
@@ -36,21 +40,24 @@ def evaluate(board, player, opponent):
     evaluation = 0
 
     analysis_board = copy.deepcopy(board)
+    legal_moves = []
+
+    # Check legal moves
+    for i in range(board_width + 1):
+        if is_legal(i, board):
+            legal_moves.append(i)
 
     if check_win(board) == player:
         evaluation = 100
 
-    if is_checkmate(opponent, analysis_board, board):
+    elif is_checkmate(opponent, board):
         evaluation = -100
 
-    # Check amount of pieces in the middle
-    evaluation += pieces_in_column(4, player, opponent, board)
+    evaluation += pieces_in_column(4, player, opponent, board) * 3
 
-    # Check amount of pieces next to middle
-    evaluation += pieces_in_column(3, player, opponent, board)
+    evaluation += pieces_in_column(3, player, opponent, board) * 2
 
-    # Check amount of pieces next to middle
-    evaluation += pieces_in_column(5, player, opponent, board)
+    evaluation += pieces_in_column(5, player, opponent, board) * 2
 
     return evaluation
 
@@ -58,19 +65,15 @@ def evaluate(board, player, opponent):
 def pieces_in_column(column, player, opponent, board):
     own_pieces = 0
     opponent_pieces = 0
-    evaluation = 0
 
-    for piece in board[column - 1]:
-        if piece == player:
+    for y in range(board_height):
+        if board[y][column - 1] == player:
             own_pieces += 1
-        if piece == opponent:
+
+        elif board[y][column - 1] == opponent:
             opponent_pieces += 1
 
-    if own_pieces > opponent_pieces:
-        evaluation += 3
-
-    if opponent_pieces > own_pieces:
-        evaluation -= 3
+    evaluation = own_pieces - opponent_pieces
 
     return evaluation
 
@@ -103,12 +106,12 @@ def is_legal(move, board_state):
         return True
 
 
-def is_checkmate(player, analysis_board, board):
+def is_checkmate(player, board):
     legal_moves = []
 
     # Check legal moves
     for i in range(board_width + 1):
-        if is_legal(i, analysis_board):
+        if is_legal(i, board):
             legal_moves.append(i)
 
     # For each move, check if there is a win

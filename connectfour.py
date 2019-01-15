@@ -38,10 +38,10 @@ def print_board():
                 print("_ ", end="")
 
             elif board[y][x] == 1:
-                print("O ", end="")
+                print("X ", end="")
 
             else:
-                print("X ", end="")
+                print("O ", end="")
 
         print("\n")
 
@@ -57,6 +57,7 @@ def play_game():
     global amount_of_ties
 
     while True:
+        print_board()
         move = jari.calculate_move(board, 1, 2)
         play_move(1, move)
 
@@ -65,12 +66,14 @@ def play_game():
         if check_win(board):
             global jari1_wins
             jari1_wins += 1
+            print_board()
             return
 
         if is_tied(board):
             amount_of_ties += 1
             return
 
+        print_board()
         move = jari2.calculate_move(board, 2, 1)
         play_move(2, move)
 
@@ -79,6 +82,7 @@ def play_game():
         if check_win(board):
             global jari2_wins
             jari2_wins += 1
+            print_board()
             return
 
         if is_tied(board):
