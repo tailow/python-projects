@@ -16,7 +16,6 @@ played_moves = []
 
 
 def make_board(width, height):
-
     new_list = []
 
     for y in range(height):
