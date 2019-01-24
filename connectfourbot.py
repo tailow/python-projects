@@ -25,13 +25,9 @@ def calculate_move(board, player, opponent):
 
         evaluation = evaluate(analyse_move(player, move, analysis_board), player, opponent)
 
-        print(evaluation)
-
         if evaluation > best_move_evaluation:
             best_move = move
             best_move_evaluation = evaluation
-
-    print("evaluation: " + str(evaluate(board, player, opponent)))
 
     return best_move
 
@@ -39,7 +35,6 @@ def calculate_move(board, player, opponent):
 def evaluate(board, player, opponent):
     evaluation = 0
 
-    analysis_board = copy.deepcopy(board)
     legal_moves = []
 
     # Check legal moves
@@ -52,6 +47,8 @@ def evaluate(board, player, opponent):
 
     elif is_checkmate(opponent, board):
         evaluation = -100
+
+    # Check amount of pieces in the middle columns
 
     evaluation += pieces_in_column(4, player, opponent, board) * 3
 

@@ -1,16 +1,9 @@
 # CONNECT FOUR
 
-import jari
-import jari2
-
-from matplotlib import pyplot as plt
+import connectfourbot
 
 board_width = 7
 board_height = 6
-
-jari1_wins = 0
-jari2_wins = 0
-amount_of_ties = 0
 
 played_moves = []
 
@@ -26,7 +19,7 @@ def make_board(width, height):
     return new_list
 
 
-def print_board():
+def print_board(board):
 
     print()
 
@@ -50,47 +43,47 @@ def print_board():
 
 
 def play_game():
-    global board
     board = make_board(board_width, board_height)
 
-    global amount_of_ties
-
     while True:
-        print_board()
-        move = jari.calculate_move(board, 1, 2)
-        play_move(1, move)
+        # Player 1 play move
+        print_board(board)
+
+        move = ask_for_input(board)
+        play_move(1, move, board)
 
         played_moves.append(move)
 
         if check_win(board):
-            global jari1_wins
-            jari1_wins += 1
-            print_board()
+            print_board(board)
+            print("Player won!\n")
             return
 
         if is_tied(board):
-            amount_of_ties += 1
+            print_board(board)
+            print("It's a tie!\n")
             return
 
-        print_board()
-        move = jari2.calculate_move(board, 2, 1)
-        play_move(2, move)
+        # Player 2 play move
+        print_board(board)
+
+        move = connectfourbot.calculate_move(board, 1, 2)
+        play_move(2, move, board)
 
         played_moves.append(move)
 
         if check_win(board):
-            global jari2_wins
-            jari2_wins += 1
-            print_board()
+            print_board(board)
+            print("Bot won!\n")
             return
 
         if is_tied(board):
-
-            amount_of_ties += 1
+            print_board(board)
+            print("It's a tie!\n")
             return
 
 
-def play_move(player, column):
+def play_move(player, column, board):
 
     # For each row, check if there is a piece
     for row in range(board_height):
@@ -105,8 +98,23 @@ def play_move(player, column):
             board[row][column - 1] = player
 
 
-def is_legal(move, board_state):
+def ask_for_input(board):
+    while True:
+        try:
+            player_input = int(input("Select column: "))
 
+        except ValueError:
+            print("Invalid input.")
+            continue
+
+        if is_legal(player_input, board):
+            return player_input
+
+        else:
+            print("Illegal move!")
+
+
+def is_legal(move, board_state):
     if move < 1 or move > 7:
         return False
 
@@ -181,24 +189,14 @@ def check_win(board_state):
                 return board_state[y][x]
 
 
-board = make_board(board_width, board_height)
+while True:
+    choice = input("Would you like to play a game? (Y/N)")
 
-for i in range(100):
-    play_game()
+    if choice.upper() == "Y":
+        play_game()
 
-print("jari1 wins: " + str(jari1_wins))
-print("jari2 wins: " + str(jari2_wins))
-print("ties: " + str(amount_of_ties))
+    elif choice.upper() == "N":
+        break
 
-data = []
-
-for i in range(1, 8):
-    count = 0
-    for num in played_moves:
-        if num == i:
-            count += 1
-
-    data.append(count)
-
-plt.plot(data)
-plt.show()
+    else:
+        print("Invalid input.\n")

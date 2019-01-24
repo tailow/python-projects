@@ -33,14 +33,13 @@ while True:
                 except ValueError:
                     print("Invalid input.")
 
-            hit_chance = attack_level / 20
+            hit_chance = attack_level * 0.15
             hit_power = strength_level
             defence = defence_level
 
             if attack_type.upper() == "ATT":
                 hit_chance *= 1.5
                 attack_xp += 100
-                print(attack_level)
 
                 if attack_xp % (attack_level * 1000) == 0:
                     attack_level += 1

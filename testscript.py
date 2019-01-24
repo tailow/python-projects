@@ -1,3 +1,5 @@
-import math
+# FILE HANDLING
 
-help(math)
+file = open("testfile.txt", "w")
+
+file.write("miro on homo lololololol " * 100000)
