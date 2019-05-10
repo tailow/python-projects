@@ -3,5 +3,8 @@ factorial = user_input
 
 for x in range(1, user_input):
     factorial *= x
+    print(x)
 
-print(factorial)
+test_file = open("testfile.txt", "w")
+
+test_file.write(str(factorial))
