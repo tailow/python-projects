@@ -1,4 +1,6 @@
 import turtle
+import time
+from matplotlib import pyplot as plt
 
 screen = turtle.Screen()
 
@@ -8,6 +10,10 @@ my_turtle.speed(0)
 my_turtle.pensize(2)
 
 screen.delay(0)
+
+start_ticks = time.time()
+
+time_taken = []
 
 triangles = []
 
@@ -44,7 +50,6 @@ def draw_triangle(triangle):
 
 
 def subdivide(triangle):
-
     ab = Position((triangle.a.x + triangle.b.x) / 2, (triangle.a.y + triangle.b.y) / 2)
     bc = Position((triangle.b.x + triangle.c.x) / 2, (triangle.b.y + triangle.c.y) / 2)
     ac = Position((triangle.a.x + triangle.c.x) / 2, (triangle.a.y + triangle.c.y) / 2)
@@ -69,6 +74,8 @@ draw_triangle(main_triangle)
 for n in range(iterations):
     new_triangles = []
 
+    time_taken.append(time.time() - start_ticks)
+
     while len(triangles) != 0:
         new_triangle1, new_triangle2, new_triangle3 = subdivide(triangles[0])
 
@@ -84,3 +91,7 @@ for n in range(iterations):
         triangles.append(triangle)
 
 screen.exitonclick()
+
+plt.plot(time_taken)
+
+#plt.show()
