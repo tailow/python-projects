@@ -19,7 +19,7 @@ triangles = []
 
 size = 200
 
-iterations = 5
+iterations = 6
 
 
 class Position:
@@ -94,4 +94,4 @@ screen.exitonclick()
 
 plt.plot(time_taken)
 
-#plt.show()
+plt.show()
