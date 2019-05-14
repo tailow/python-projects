@@ -1,14 +1,15 @@
 import turtle
 import time
+import math
 
 screen = turtle.Screen()
 
 my_turtle = turtle.Turtle()
-#my_turtle.hideturtle()
-my_turtle.speed(3)
+my_turtle.hideturtle()
+my_turtle.speed(0)
 my_turtle.pensize(2)
 
-#screen.delay(0)
+screen.delay(0)
 
 start_ticks = time.time()
 
@@ -18,19 +19,29 @@ lines = []
 
 size = 200
 
-iterations = 4
+iterations = 5
 
 
-class Position:
+class Vector2:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+    def angle(self):
+        return math.atan2(self.y, self.x)
+
+    def length(self):
+        return math.sqrt(self.x**2 + self.y**2)
 
 
 class Line:
     def __init__(self, a, b):
         self.a = a
         self.b = b
+
+
+def normalize(vector):
+    return Vector2(vector.x / vector.length(), vector.y / vector.length())
 
 
 def draw_line(line):
@@ -42,16 +53,23 @@ def draw_line(line):
 
 
 def calculate_points(line):
-    point1 = Position((line.a.x * (2/3) + line.b.x * (1/3)), (line.a.y * (2/3) + line.b.y * (1/3)))
-    point2 = Position((line.a.x * (1/3) + line.b.x * (2/3)), (line.a.y * (1/3) + line.b.y * (2/3)))
+    point1 = Vector2((line.a.x * (2/3) + line.b.x * (1/3)), (line.a.y * (2/3) + line.b.y * (1/3)))
+    point2 = Vector2((line.a.x * (1/3) + line.b.x * (2/3)), (line.a.y * (1/3) + line.b.y * (2/3)))
 
     return point1, point2
 
 
 def calculate_top(point1, point2):
-    magnitude = ((point2.x - point1.x) ** 2 + (point2.y - point1.y) ** 2) ** (1/2)
+    vector = Vector2(point2.x - point1.x, point2.y - point1.y)
 
-    point3 = Position()
+    side_length = math.sqrt((point2.x - point1.x) ** 2 + (point2.y - point1.y) ** 2)
+    magnitude = math.sqrt(side_length ** 2 - (side_length / 2) ** 2)
+
+    middle_point = Vector2((point1.x + point2.x) / 2, (point1.y + point2.y) / 2)
+
+    perp_vector = normalize(Vector2(-vector.y, vector.x))
+
+    point3 = Vector2(middle_point.x - perp_vector.x * magnitude, middle_point.y - perp_vector.y * magnitude)
 
     return point3
 
@@ -70,9 +88,9 @@ def subdivide(line):
     return line1, line2, line3, line4
 
 
-a = Position(-size, -size / 2 * 1.3333333)
-b = Position(size, -size / 2 * 1.3333333)
-c = Position(0, size / 2 * 1.3333333)
+a = Vector2(-size, -size / 2 * 1.3333333)
+b = Vector2(size, -size / 2 * 1.3333333)
+c = Vector2(0, size / 2 * 1.3333333)
 
 lines.append(Line(a, b))
 lines.append(Line(b, c))
@@ -83,7 +101,7 @@ draw_line(lines[1])
 draw_line(lines[2])
 
 for n in range(iterations):
-    #my_turtle.clear()
+    my_turtle.clear()
 
     new_lines = []
 
