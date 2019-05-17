@@ -19,7 +19,7 @@ lines = []
 
 size = 200
 
-iterations = 5
+iterations = 4
 
 
 class Vector2:
