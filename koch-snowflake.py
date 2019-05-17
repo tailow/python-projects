@@ -7,7 +7,9 @@ screen = turtle.Screen()
 my_turtle = turtle.Turtle()
 my_turtle.hideturtle()
 my_turtle.speed(0)
-my_turtle.pensize(2)
+my_turtle.pensize(1)
+my_turtle.shape("turtle")
+my_turtle.turtlesize(5)
 
 screen.delay(0)
 
@@ -118,5 +120,6 @@ for n in range(iterations):
     for new_line in new_lines:
         draw_line(new_line)
         lines.append(new_line)
+
 
 screen.exitonclick()
