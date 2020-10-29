@@ -13,7 +13,7 @@ screen.delay(0)
 
 squares = []
 
-iterations = 5
+iterations = 4
 
 
 class Vector2:
