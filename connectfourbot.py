@@ -7,6 +7,9 @@ board_height = 6
 board_width = 7
 
 search_depth = 4
+lines_of_three_multiplier = 4
+lines_of_two_multiplier = 2
+middle_multiplier = 5
 
 
 def calculate_move(board, player):
@@ -73,25 +76,25 @@ def evaluate_board(board):
     p2_lines_of_two, p2_lines_of_three = pieces_per_line(2, board)
 
     # two in a line +2
-    evaluation += p1_lines_of_two * 2
-    evaluation -= p2_lines_of_two * 2
+    evaluation += p1_lines_of_two * lines_of_two_multiplier
+    evaluation -= p2_lines_of_two * lines_of_two_multiplier
 
     # three in a line +4
-    evaluation += p1_lines_of_three * 4
-    evaluation -= p2_lines_of_three * 4
+    evaluation += p1_lines_of_three * lines_of_three_multiplier
+    evaluation -= p2_lines_of_three * lines_of_three_multiplier
 
     # piece in middle +5
     for row in range(board_height):
         if board[row][3] == 1:
-            evaluation += 5
+            evaluation += middle_multiplier
         elif board[row][3] == 2:
-            evaluation -= 5
+            evaluation -= middle_multiplier
 
     # win +1000
     if check_win(board) == 1:
-        evaluation += 1000
+        evaluation += math.inf
     elif check_win(board) == 2:
-        evaluation += -1000
+        evaluation -= math.inf
 
     return evaluation
 

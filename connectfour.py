@@ -50,7 +50,7 @@ def play_game():
     previous_move = -1
 
     while True:
-        print("Board evaluation: " + str(connectfourbot.evaluate_board(board)))
+        print("\nBoard evaluation: " + str(connectfourbot.evaluate_board(board)))
 
         # Player 1 play move
         print_board(board, previous_move)
@@ -72,7 +72,7 @@ def play_game():
             print("It's a tie!\n")
             return
 
-        print("Board evaluation: " + str(connectfourbot.evaluate_board(board)))
+        print("\nBoard evaluation: " + str(connectfourbot.evaluate_board(board)))
 
         # Player 2 play move
         print_board(board, previous_move)
