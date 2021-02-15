@@ -1,8 +1,9 @@
 # PRIME CHECKER
 
+import time
 import math
 
-primes = [2]
+start_time = time.time()
 
 # pls don't go above 10 000 000
 prime_count = 1000000
@@ -18,9 +19,8 @@ def check_primality(num):
 i = 3
 
 while i < prime_count:
-    if check_primality(i):
-        primes.append(i)
+    print(i)
+
     i += 2
 
-for prime in primes:
-    print(prime)
+print("%s seconds" % (time.time() - start_time))

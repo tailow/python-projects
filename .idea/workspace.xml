@@ -3,126 +3,49 @@
   <component name="ChangeListManager">
     <list default="true" id="9203a8bb-508e-4d69-a367-b301fa2b14d9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/koch-snowflake.py" beforeDir="false" afterPath="$PROJECT_DIR$/koch-snowflake.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connectfour.py" beforeDir="false" afterPath="$PROJECT_DIR$/connectfour.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connectfourbot.py" beforeDir="false" afterPath="$PROJECT_DIR$/connectfourbot.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="1954179863">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.3" value="2" />
-          <entry key="project.opened" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="py" value="4213" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="Python" value="4213" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="py" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Python" value="4" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sierpinski-triangle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/koch-snowflake.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <marker date="1557858053798" expanded="true" signature="583:661" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/sierpinsky-triangle.py" />
-        <option value="$PROJECT_DIR$/sierpinski-triangle.py" />
-        <option value="$PROJECT_DIR$/koch-snowflake.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="50" />
-    <option name="y" value="-11" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="python-projects" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python-projects" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1jQqPm4bpjT1riuwu4tLHoyWMXQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.koch-snowflake">
+  <component name="RunManager" selected="Python.connectfour">
+    <configuration name="connectfour" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="python-projects" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/connectfour.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="koch-snowflake" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python-projects" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,7 +67,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sierpinski-triangle" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="primechecker" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python-projects" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -156,7 +79,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sierpinski-triangle.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/primechecker.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sierpinski-carpet" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="python-projects" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sierpinski-carpet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,15 +131,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.sierpinsky-triangle" />
-      <item itemvalue="Python.sierpinski-triangle" />
+      <item itemvalue="Python.connectfour" />
       <item itemvalue="Python.koch-snowflake" />
+      <item itemvalue="Python.primechecker" />
+      <item itemvalue="Python.sierpinski-carpet" />
+      <item itemvalue="Python.sierpinsky-triangle" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.koch-snowflake" />
-        <item itemvalue="Python.sierpinski-triangle" />
+        <item itemvalue="Python.connectfour" />
+        <item itemvalue="Python.primechecker" />
         <item itemvalue="Python.sierpinsky-triangle" />
+        <item itemvalue="Python.sierpinski-carpet" />
+        <item itemvalue="Python.koch-snowflake" />
       </list>
     </recent_temporary>
   </component>
@@ -212,65 +160,38 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13909379" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3264642" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/connectfour.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sierpinsky-triangle.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/tokenize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="453" selection-start-line="453" selection-end-line="453" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sierpinski-triangle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/koch-snowflake.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1557858053798" expanded="true" signature="583:661" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state width="2539" height="490" key="GridCell.Tab.0.bottom" timestamp="1603992037237">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="490" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1080.-223.1080.1920@0.0.2560.1400" timestamp="1603992037237" />
+    <state width="2539" height="490" key="GridCell.Tab.0.center" timestamp="1603992037237">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="490" key="GridCell.Tab.0.center/0.0.2560.1400/-1080.-223.1080.1920@0.0.2560.1400" timestamp="1603992037237" />
+    <state width="2539" height="490" key="GridCell.Tab.0.left" timestamp="1603992037237">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="490" key="GridCell.Tab.0.left/0.0.2560.1400/-1080.-223.1080.1920@0.0.2560.1400" timestamp="1603992037237" />
+    <state width="2539" height="490" key="GridCell.Tab.0.right" timestamp="1603992037237">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="490" key="GridCell.Tab.0.right/0.0.2560.1400/-1080.-223.1080.1920@0.0.2560.1400" timestamp="1603992037237" />
+    <state width="2539" height="490" key="GridCell.Tab.1.bottom" timestamp="1603992037237">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="490" key="GridCell.Tab.1.bottom/0.0.2560.1400/-1080.-223.1080.1920@0.0.2560.1400" timestamp="1603992037237" />
+    <state width="2539" height="490" key="GridCell.Tab.1.center" timestamp="1603992037237">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="490" key="GridCell.Tab.1.center/0.0.2560.1400/-1080.-223.1080.1920@0.0.2560.1400" timestamp="1603992037237" />
+    <state width="2539" height="490" key="GridCell.Tab.1.left" timestamp="1603992037237">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="490" key="GridCell.Tab.1.left/0.0.2560.1400/-1080.-223.1080.1920@0.0.2560.1400" timestamp="1603992037237" />
+    <state width="2539" height="490" key="GridCell.Tab.1.right" timestamp="1603992037237">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="490" key="GridCell.Tab.1.right/0.0.2560.1400/-1080.-223.1080.1920@0.0.2560.1400" timestamp="1603992037237" />
   </component>
 </project>

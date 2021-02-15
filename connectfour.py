@@ -9,35 +9,37 @@ played_moves = []
 
 
 def make_board(width, height):
-    new_list = []
+    board = []
 
     for y in range(height):
-        new_list.append([])
+        board.append([])
         for x in range(width):
-            new_list[y].append(0)
+            board[y].append(0)
 
-    return new_list
+    return board
 
 
-def print_board(board):
-
-    print()
-
+def print_board(board, previous_move):
     for y in range(board_height):
         for x in range(board_width):
-
             if board[y][x] == 0:
-                print("_ ", end="")
+                print("_", end=" ")
 
             elif board[y][x] == 1:
-                print("X ", end="")
+                print("X", end=" ")
 
             else:
-                print("O ", end="")
+                print("O", end=" ")
 
-        print("\n")
+        print()
 
     print("1 2 3 4 5 6 7")
+
+    for column in range(board_width):
+        if column == previous_move - 1:
+            print("^", end=" ")
+        else:
+            print(" ", end=" ")
 
     print()
 
@@ -45,49 +47,57 @@ def print_board(board):
 def play_game():
     board = make_board(board_width, board_height)
 
+    previous_move = -1
+
     while True:
+        print("\nBoard evaluation: " + str(connectfourbot.evaluate_board(board)))
+
         # Player 1 play move
-        print_board(board)
+        print_board(board, previous_move)
 
         move = ask_for_input(board)
+
         play_move(1, move, board)
+        previous_move = move
 
         played_moves.append(move)
 
         if check_win(board):
-            print_board(board)
+            print_board(board, previous_move)
             print("Player won!\n")
             return
 
         if is_tied(board):
-            print_board(board)
+            print_board(board, previous_move)
             print("It's a tie!\n")
             return
 
-        # Player 2 play move
-        print_board(board)
+        print("\nBoard evaluation: " + str(connectfourbot.evaluate_board(board)))
 
-        move = connectfourbot.calculate_move(board, 1, 2)
+        # Player 2 play move
+        print_board(board, previous_move)
+
+        move = connectfourbot.calculate_move(board, 2)
+
         play_move(2, move, board)
+        previous_move = move
 
         played_moves.append(move)
 
         if check_win(board):
-            print_board(board)
+            print_board(board, previous_move)
             print("Bot won!\n")
             return
 
         if is_tied(board):
-            print_board(board)
+            print_board(board, previous_move)
             print("It's a tie!\n")
             return
 
 
 def play_move(player, column, board):
-
     # For each row, check if there is a piece
     for row in range(board_height):
-
         # If there is, add a piece to the row above
         if board[row][column - 1] != 0:
             board[row - 1][column - 1] = player
@@ -178,7 +188,7 @@ def check_win(board_state):
             if board_state[y][x] == board_state[y + 1][x + 1] == board_state[y + 2][x + 2] == board_state[y + 3][x + 3]\
                     and board_state[y][x] != 0:
 
-                    return board_state[y][x]
+                return board_state[y][x]
 
     # Check ascending diagonal rows
     for y in range(3, board_height):
