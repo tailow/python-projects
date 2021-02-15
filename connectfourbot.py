@@ -49,7 +49,6 @@ def evaluate(board, player, opponent):
         evaluation = -100
 
     # Check amount of pieces in the middle columns
-
     evaluation += pieces_in_column(4, player, opponent, board) * 3
 
     evaluation += pieces_in_column(3, player, opponent, board) * 2

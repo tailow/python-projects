@@ -3,7 +3,6 @@ factorial = user_input
 
 for x in range(1, user_input):
     factorial *= x
-    print(x)
 
 test_file = open("testfile.txt", "w")
 

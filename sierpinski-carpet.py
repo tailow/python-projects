@@ -6,14 +6,13 @@ size = 200
 my_turtle = turtle.Turtle()
 my_turtle.hideturtle()
 my_turtle.speed(0)
-my_turtle.pencolor("purple")
 
 screen = turtle.Screen()
 screen.delay(0)
 
 squares = []
 
-iterations = 5
+iterations = 4
 
 
 class Vector2:
@@ -80,7 +79,7 @@ def subdivide(square):
                 draw_square(define_square(Vector2(x, y), side_length / 3, "white"))
 
             else:
-                subdivided_squares.append(define_square(Vector2(x, y), side_length / 3, "purple"))
+                subdivided_squares.append(define_square(Vector2(x, y), side_length / 3, "black"))
 
             x += side_length / 3
         y += side_length / 3
@@ -93,7 +92,7 @@ b = Vector2(size, -size)
 c = Vector2(size, size)
 d = Vector2(-size, size)
 
-main_square = Square(a, b, c, d, "purple", Vector2(0, 0))
+main_square = Square(a, b, c, d, "black", Vector2(0, 0))
 
 squares.append(main_square)
 
